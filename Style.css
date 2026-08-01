@@ -1,445 +1,2810 @@
-/* ==========================================
-   1. VARIABLES & RESET
-   ========================================== */
+/* =====================================================
+   PARA FANNY ❤️
+   STYLE.CSS
+   PARTE 1/5
+   ===================================================== */
+
+
+/* =========================
+   VARIABLES Y RESET
+   ========================= */
+
 :root {
-    --primary-color: #e63946;
-    --secondary-color: #ff758f;
-    --bg-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-    --text-dark: #2b2d42;
-    --text-light: #ffffff;
-    --glass-bg: rgba(255, 255, 255, 0.25);
-    --glass-border: rgba(255, 255, 255, 0.4);
-    --font-main: 'Poppins', sans-serif;
-    --font-script: 'Great Vibes', cursive;
+
+    --pink: #ff4d6d;
+    --soft-pink: #ffb3c6;
+    --light-pink: #ffe5ec;
+    --white: #ffffff;
+    --dark: #2b2d42;
+    --glass: rgba(255,255,255,0.20);
+
+    --shadow:
+    0 10px 30px rgba(0,0,0,0.15);
+
+    --script:
+    'Great Vibes', cursive;
+
+    --main:
+    'Poppins', sans-serif;
+
 }
+
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
 }
+
+
+html {
+
+    scroll-behavior:smooth;
+
+}
+
 
 body {
-    font-family: var(--font-main);
-    background: var(--bg-gradient);
-    color: var(--text-dark);
-    min-height: 100vh;
-    overflow-x: hidden;
-    text-align: center;
+
+    font-family:var(--main);
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff758f,
+        #ffd6e0,
+        #fff0f3
+    );
+
+    min-height:100vh;
+
+    color:var(--dark);
+
+    overflow-x:hidden;
+
 }
 
-/* ==========================================
-   2. PANTALLA DE CARGA (LOADER)
-   ========================================== */
-#loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    padding: 20px;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
+
+/* =========================
+   FONDO DE ESTRELLAS
+   ========================= */
+
+
+#stars {
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:-2;
+
 }
+
+
+.star {
+
+    position:absolute;
+
+    width:3px;
+
+    height:3px;
+
+    background:white;
+
+    border-radius:50%;
+
+    animation:
+    twinkle 3s infinite alternate;
+
+}
+
+
+@keyframes twinkle {
+
+
+    from {
+
+        opacity:.2;
+
+        transform:scale(.7);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:scale(1.5);
+
+    }
+
+
+}
+
+
+
+/* =========================
+   CORAZONES DE FONDO
+   ========================= */
+
+
+#hearts {
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:-1;
+
+}
+
+
+.background-heart {
+
+
+    position:absolute;
+
+    bottom:-50px;
+
+    color:#ff4d6d;
+
+    opacity:.4;
+
+    animation:
+    floatHeart 12s linear infinite;
+
+
+}
+
+
+
+@keyframes floatHeart {
+
+
+    0% {
+
+        transform:
+        translateY(0)
+        rotate(0deg);
+
+        opacity:0;
+
+    }
+
+
+    20% {
+
+        opacity:.6;
+
+    }
+
+
+    100% {
+
+        transform:
+        translateY(-120vh)
+        rotate(360deg);
+
+        opacity:0;
+
+    }
+
+
+}
+
+
+
+/* =========================
+   LOADER
+   ========================= */
+
+
+#loader {
+
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #ff758f,
+        #ffd6e0
+    );
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    z-index:9999;
+
+    transition:
+    opacity 1s ease,
+    visibility 1s;
+
+
+}
+
+
 
 #loader h1 {
-    font-family: var(--font-script);
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 10px;
+
+
+    font-size:70px;
+
+    animation:
+    pulse 1.5s infinite;
+
+
 }
 
-.heart-loader {
-    width: 50px;
-    height: 50px;
-    background-color: var(--primary-color);
-    margin: 30px auto;
-    transform: rotate(45deg);
-    animation: heartbeat 1.2s infinite;
-    position: relative;
+
+#loader h2 {
+
+
+    color:white;
+
+    font-family:var(--script);
+
+    font-size:60px;
+
+    margin-top:20px;
+
+
 }
 
-.heart-loader::before,
-.heart-loader::after {
-    content: "";
-    width: 50px;
-    height: 50px;
-    background-color: var(--primary-color);
-    border-radius: 50%;
-    position: absolute;
+
+
+#loader p {
+
+
+    color:white;
+
+    margin-top:15px;
+
+    font-size:18px;
+
 }
 
-.heart-loader::before {
-    top: -25px;
-    left: 0;
+
+@keyframes pulse {
+
+
+    0% {
+
+        transform:scale(1);
+
+    }
+
+
+    50% {
+
+        transform:scale(1.3);
+
+    }
+
+
+    100% {
+
+        transform:scale(1);
+
+    }
+
+
 }
 
-.heart-loader::after {
-    left: -25px;
-    top: 0;
+
+
+/* =========================
+   HERO PRINCIPAL
+   ========================= */
+
+
+.hero {
+
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+
 }
 
-@keyframes heartbeat {
-    0% { transform: rotate(45deg) scale(0.8); }
-    50% { transform: rotate(45deg) scale(1.2); }
-    100% { transform: rotate(45deg) scale(0.8); }
+
+
+.hero-content {
+
+
+    text-align:center;
+
+    max-width:800px;
+
+    animation:
+
+    appear 2s ease;
+
+
 }
 
-/* ==========================================
-   3. ENCABEZADO Y HERO
-   ========================================== */
-header {
-    padding: 60px 20px 30px;
+
+
+.hero h1 {
+
+
+    font-family:var(--script);
+
+    font-size:
+
+    clamp(80px,12vw,150px);
+
+
+    color:white;
+
+
+    text-shadow:
+
+    0 5px 20px rgba(0,0,0,.2);
+
+
 }
 
-header h1 {
-    font-family: var(--font-script);
-    font-size: 4.5rem;
-    color: var(--primary-color);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+
+
+.hero p {
+
+
+    color:white;
+
+    font-size:22px;
+
+    line-height:1.7;
+
+    margin:30px auto;
+
+    max-width:600px;
+
+
 }
 
-.subtitle {
-    font-weight: 300;
-    margin-top: 10px;
-    font-size: 1.1rem;
+
+
+#startButton {
+
+
+    border:none;
+
+    padding:18px 45px;
+
+    border-radius:50px;
+
+    background:white;
+
+    color:var(--pink);
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    box-shadow:var(--shadow);
+
+    transition:.4s;
+
+
 }
 
-#musicButton {
-    margin-top: 25px;
-    padding: 12px 28px;
-    border: none;
-    background: var(--primary-color);
-    color: var(--text-light);
-    font-family: var(--font-main);
-    font-weight: 600;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
-    transition: transform 0.2s, background-color 0.2s;
+
+
+#startButton:hover {
+
+
+    transform:
+
+    translateY(-5px)
+    scale(1.05);
+
+
 }
 
-#musicButton:hover {
-    transform: scale(1.05);
-    background: #d62839;
+
+
+/* =========================
+   ANIMACIÓN GENERAL
+   ========================= */
+
+
+@keyframes appear {
+
+
+    from {
+
+        opacity:0;
+
+        transform:
+        translateY(40px);
+
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+
+    }
+/* =====================================================
+   PARA FANNY ❤️
+   STYLE.CSS
+   PARTE 2/5
+   ===================================================== */
+
+
+/* =========================
+   SECCIONES OCULTAS
+   ========================= */
+
+
+.hidden {
+
+    opacity:0;
+
+    transform:
+    translateY(50px);
+
+    transition:
+
+    opacity 1s ease,
+
+    transform 1s ease;
+
 }
 
-/* EFECTO GLASSMORPHISM PARA SECCIONES */
+
+
+.show {
+
+    opacity:1;
+
+    transform:
+    translateY(0);
+
+}
+
+
+
+/* =========================
+   EFECTO GLASSMORPHISM
+   ========================= */
+
+
 .glass {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 30px;
-    max-width: 700px;
-    margin: 20px auto;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+
+
+    background:
+
+    rgba(255,255,255,0.25);
+
+
+    backdrop-filter:
+
+    blur(15px);
+
+
+    -webkit-backdrop-filter:
+
+    blur(15px);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.4);
+
+
+    border-radius:
+
+    30px;
+
+
+    padding:
+
+    40px;
+
+
+    box-shadow:
+
+    0 15px 40px rgba(0,0,0,.15);
+
+
 }
 
-.hero h2, .letter h2 {
-    font-family: var(--font-script);
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 15px;
+
+
+section {
+
+
+    padding:
+
+    80px 25px;
+
+
 }
 
-/* ==========================================
-   4. CONTADOR
-   ========================================== */
+
+
+/* =========================
+   MENSAJE PRINCIPAL
+   ========================= */
+
+
+.message {
+
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+
+
+.message .glass {
+
+
+    max-width:800px;
+
+
+}
+
+
+
+.message h2 {
+
+
+    font-family:var(--script);
+
+    font-size:60px;
+
+    color:var(--pink);
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+.message p {
+
+
+    font-size:20px;
+
+    line-height:1.8;
+
+
+}
+
+
+
+/* =========================
+   CONTADOR
+   ========================= */
+
+
 .counter {
-    padding: 40px 20px;
+
+
+    text-align:center;
+
+
 }
+
+
 
 .counter h2 {
-    margin-bottom: 20px;
-    font-size: 1.8rem;
+
+
+    font-family:var(--script);
+
+    font-size:60px;
+
+    color:white;
+
+    margin-bottom:40px;
+
+
 }
 
-#contador {
-    font-size: 1.5rem;
-    font-weight: 600;
-    background: rgba(255, 255, 255, 0.5);
-    display: inline-block;
-    padding: 15px 30px;
-    border-radius: 15px;
+
+
+.contador-grid {
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(4,1fr);
+
+
+    gap:20px;
+
+
+    max-width:900px;
+
+
+    margin:auto;
+
+
 }
 
-/* ==========================================
-   5. GALERÍA DE FOTOS
-   ========================================== */
+
+
+.box {
+
+
+    background:
+
+    rgba(255,255,255,.35);
+
+
+    backdrop-filter:
+
+    blur(10px);
+
+
+    padding:
+
+    30px 15px;
+
+
+    border-radius:
+
+    25px;
+
+
+    box-shadow:
+
+    var(--shadow);
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.box:hover {
+
+
+    transform:
+
+    translateY(-10px);
+
+
+}
+
+
+
+.box span {
+
+
+    display:block;
+
+
+    font-size:45px;
+
+
+    font-weight:700;
+
+
+    color:
+
+    var(--pink);
+
+
+}
+
+
+
+.box p {
+
+
+    font-size:18px;
+
+    font-weight:600;
+
+
+}
+
+
+
+/* =========================
+   GALERÍA
+   ========================= */
+
+
 .gallery {
-    padding: 40px 20px;
+
+
+    text-align:center;
+
+
 }
+
+
 
 .gallery h2 {
-    margin-bottom: 25px;
-    font-size: 1.8rem;
+
+
+    font-family:var(--script);
+
+
+    font-size:70px;
+
+
+    color:white;
+
+
+    margin-bottom:50px;
+
+
 }
+
+
 
 .photos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    max-width: 1000px;
-    margin: 0 auto;
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(auto-fit,minmax(250px,1fr));
+
+
+    gap:35px;
+
+
+    max-width:1100px;
+
+
+    margin:auto;
+
+
 }
 
-.photos img {
-    width: 280px;
-    height: 280px;
-    object-fit: cover;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+
+.photo {
+
+
+    background:white;
+
+
+    padding:15px;
+
+
+    border-radius:10px;
+
+
+    box-shadow:
+
+    var(--shadow);
+
+
+    transform:
+
+    rotate(
+    calc(var(--rotate,0)*1deg)
+    );
+
+
+    transition:.5s;
+
+
 }
 
-.photos img:hover {
-    transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+
+
+.photo:nth-child(odd) {
+
+
+    --rotate:-3;
+
+
 }
 
-/* ==========================================
-   6. TARJETAS DE RAZONES
-   ========================================== */
+
+
+.photo:nth-child(even) {
+
+
+    --rotate:3;
+
+
+}
+
+
+
+.photo:hover {
+
+
+    transform:
+
+    scale(1.05)
+
+    rotate(0);
+
+
+}
+
+
+
+.photo img {
+
+
+    width:100%;
+
+
+    height:300px;
+
+
+    object-fit:cover;
+
+
+    border-radius:8px;
+
+
+}
+
+
+
+.photo span {
+
+
+    display:block;
+
+
+    margin-top:15px;
+
+
+    font-size:16px;
+
+
+    font-weight:600;
+
+
+    color:#555;
+
+
+}
+
+
+
+/* =========================
+   TITULOS GENERALES
+   ========================= */
+
+
+h2 {
+
+
+    letter-spacing:.5px;
+
+
+}
+
+
+
+/* =========================
+   BOTONES GENERALES
+   ========================= */
+
+
+button {
+
+
+    font-family:var(--main);
+
+
+}
+
+
+
+/* =========================
+   RESPONSIVE TABLET
+   ========================= */
+
+
+@media(max-width:900px){
+
+
+    .contador-grid {
+
+
+        grid-template-columns:
+
+        repeat(2,1fr);
+
+
+    }
+
+
+}
+/* =====================================================
+   PARA FANNY ❤️
+   STYLE.CSS
+   PARTE 3/5
+   SOBRE Y CARTA ANIMADA
+   ===================================================== */
+
+
+/* =========================
+   SECCIÓN DE CARTA
+   ========================= */
+
+
+.letter-section {
+
+    text-align:center;
+
+}
+
+
+.letter-section h2 {
+
+    font-family:var(--script);
+
+    color:white;
+
+    font-size:70px;
+
+    margin-bottom:50px;
+
+}
+
+
+
+.hint {
+
+    color:white;
+
+    margin-top:30px;
+
+    font-size:18px;
+
+    animation:
+
+    pulseHint 2s infinite;
+
+}
+
+
+
+@keyframes pulseHint {
+
+
+    0% {
+
+        opacity:.5;
+
+    }
+
+
+    50% {
+
+        opacity:1;
+
+    }
+
+
+    100% {
+
+        opacity:.5;
+
+    }
+
+}
+
+
+
+/* =========================
+   SOBRE
+   ========================= */
+
+
+.envelope {
+
+
+    position:relative;
+
+    width:350px;
+
+    height:240px;
+
+    margin:auto;
+
+    cursor:pointer;
+
+    perspective:1000px;
+
+
+}
+
+
+
+.envelope .back {
+
+
+    position:absolute;
+
+    width:100%;
+
+    height:100%;
+
+    background:
+
+    #ff8fab;
+
+    border-radius:10px;
+
+    box-shadow:
+
+    var(--shadow);
+
+
+}
+
+
+
+.envelope .front {
+
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:60%;
+
+    background:
+
+    #ffb3c6;
+
+    clip-path:
+
+    polygon(
+
+    0 0,
+
+    100% 0,
+
+    50% 100%
+
+    );
+
+
+    z-index:5;
+
+
+}
+
+
+
+.envelope::before {
+
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+
+    background:
+
+    #ffc2d1;
+
+
+    clip-path:
+
+    polygon(
+
+    0 0,
+
+    50% 50%,
+
+    100% 0
+
+    );
+
+
+    transform-origin:top;
+
+
+    transition:
+
+    transform 1s ease;
+
+
+    z-index:6;
+
+
+}
+
+
+
+/* =========================
+   CARTA DENTRO DEL SOBRE
+   ========================= */
+
+
+.letter {
+
+
+    position:absolute;
+
+
+    width:90%;
+
+
+    height:90%;
+
+
+    left:5%;
+
+
+    bottom:5%;
+
+
+    background:white;
+
+
+    border-radius:10px;
+
+
+    overflow:hidden;
+
+
+    transition:
+
+    transform 1.2s ease;
+
+
+    z-index:3;
+
+
+}
+
+
+
+.paper {
+
+
+    padding:30px;
+
+
+    height:100%;
+
+
+    overflow-y:auto;
+
+
+    text-align:left;
+
+
+}
+
+
+
+.paper h3 {
+
+
+    font-family:
+
+    var(--script);
+
+
+    color:
+
+    var(--pink);
+
+
+    font-size:45px;
+
+
+    text-align:center;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+.paper p {
+
+
+    line-height:1.8;
+
+
+    font-size:17px;
+
+
+}
+
+
+
+/* =========================
+   SELLO
+   ========================= */
+
+
+.heart-seal {
+
+
+    position:absolute;
+
+
+    top:90px;
+
+
+    left:50%;
+
+
+    transform:
+
+    translateX(-50%);
+
+
+    background:
+
+    var(--pink);
+
+
+    width:70px;
+
+
+    height:70px;
+
+
+    border-radius:50%;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    font-size:35px;
+
+
+    z-index:10;
+
+
+    box-shadow:
+
+    0 5px 20px rgba(0,0,0,.25);
+
+
+    transition:.5s;
+
+
+}
+
+
+
+/* =========================
+   SOBRE ABIERTO
+   ========================= */
+
+
+.envelope.open::before {
+
+
+    transform:
+
+    rotateX(180deg);
+
+
+}
+
+
+
+.envelope.open .letter {
+
+
+    transform:
+
+    translateY(-150px);
+
+
+}
+
+
+
+.envelope.open .heart-seal {
+
+
+    transform:
+
+    translateX(-50%)
+
+    scale(0);
+
+
+    opacity:0;
+
+
+}
+
+
+
+/* =========================
+   ANIMACIÓN CARTA
+   ========================= */
+
+
+@keyframes letterUp {
+
+
+    from {
+
+
+        transform:
+
+        translateY(0);
+
+
+    }
+
+
+    to {
+
+
+        transform:
+
+        translateY(-150px);
+
+
+    }
+
+
+}
+
+
+
+/* =========================
+   TEXTO ESCRITO
+   ========================= */
+
+
+#typing {
+
+
+    min-height:250px;
+
+
+    white-space:normal;
+
+
+}
+
+
+
+/* =========================
+   EFECTO BRILLO
+   ========================= */
+
+
+.envelope:hover {
+
+
+    transform:
+
+    translateY(-10px);
+
+
+    transition:.4s;
+
+
+}
+
+
+
+/* =========================
+   MÓVIL
+   ========================= */
+
+
+@media(max-width:600px){
+
+
+    .envelope {
+
+
+        width:290px;
+
+        height:200px;
+
+
+    }
+
+
+
+    .letter-section h2 {
+
+
+        font-size:50px;
+
+
+    }
+
+
+
+    .paper h3 {
+
+
+        font-size:35px;
+
+
+    }
+
+
+}
+/* =====================================================
+   PARA FANNY ❤️
+   STYLE.CSS
+   PARTE 4/5
+   RAZONES - FUTURO - SORPRESA - FOOTER
+   ===================================================== */
+
+
+/* =========================
+   RAZONES
+   ========================= */
+
+
 .reasons {
-    padding: 40px 20px;
+
+    text-align:center;
+
 }
+
+
 
 .reasons h2 {
-    margin-bottom: 25px;
-    font-size: 1.8rem;
+
+    font-family:var(--script);
+
+    font-size:70px;
+
+    color:white;
+
+    margin-bottom:40px;
+
 }
 
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    max-width: 900px;
-    margin: 0 auto;
+
+
+.reason-card {
+
+
+    max-width:600px;
+
+    margin:auto;
+
+    background:
+
+    rgba(255,255,255,.35);
+
+
+    backdrop-filter:
+
+    blur(15px);
+
+
+    padding:50px 30px;
+
+
+    border-radius:30px;
+
+
+    box-shadow:
+
+    var(--shadow);
+
+
 }
 
-.card {
-    background: rgba(255, 255, 255, 0.6);
-    padding: 20px;
-    border-radius: 15px;
-    font-weight: 600;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    transition: transform 0.3s;
+
+
+#reasonText {
+
+
+    font-size:28px;
+
+
+    line-height:1.6;
+
+
+    color:
+
+    var(--dark);
+
+
+    min-height:100px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
 }
 
-.card:hover {
-    transform: translateY(-3px);
+
+
+#reasonButton {
+
+
+    margin-top:35px;
+
+
+    padding:15px 35px;
+
+
+    border:none;
+
+
+    border-radius:50px;
+
+
+    background:
+
+    var(--pink);
+
+
+    color:white;
+
+
+    font-size:18px;
+
+
+    font-weight:600;
+
+
+    cursor:pointer;
+
+
+    transition:.4s;
+
+
 }
 
-/* ==========================================
-   7. NUESTRO FUTURO
-   ========================================== */
+
+
+#reasonButton:hover {
+
+
+    transform:
+
+    scale(1.08);
+
+
+    box-shadow:
+
+    0 10px 25px rgba(255,77,109,.4);
+
+
+}
+
+
+
+/* =========================
+   FUTURO
+   ========================= */
+
+
 .future {
-    padding: 40px 20px;
+
+
+    text-align:center;
+
+
 }
+
+
 
 .future h2 {
-    margin-bottom: 20px;
-    font-size: 1.8rem;
+
+
+    font-family:
+
+    var(--script);
+
+
+    font-size:70px;
+
+
+    color:white;
+
+
+    margin-bottom:40px;
+
+
 }
+
+
 
 .future ul {
-    list-style: none;
-    max-width: 500px;
-    margin: 0 auto;
-    text-align: left;
+
+
+    list-style:none;
+
+
+    max-width:700px;
+
+
+    margin:auto;
+
+
 }
+
+
 
 .future li {
-    background: rgba(255, 255, 255, 0.4);
-    margin-bottom: 10px;
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-weight: 400;
+
+
+    background:
+
+    rgba(255,255,255,.35);
+
+
+    backdrop-filter:
+
+    blur(10px);
+
+
+    margin:15px;
+
+
+    padding:20px;
+
+
+    border-radius:20px;
+
+
+    font-size:20px;
+
+
+    box-shadow:
+
+    0 5px 20px rgba(0,0,0,.1);
+
+
+    transition:.4s;
+
+
 }
 
-/* ==========================================
-   8. SORPRESA & FOOTER
-   ========================================== */
+
+
+.future li:hover {
+
+
+    transform:
+
+    translateX(10px);
+
+
+}
+
+
+
+/* =========================
+   SORPRESA
+   ========================= */
+
+
 .surprise {
-    padding: 30px 20px;
+
+
+    text-align:center;
+
+
 }
 
-#surpriseButton {
-    padding: 15px 40px;
-    font-size: 1.2rem;
-    border: none;
-    background: var(--secondary-color);
-    color: var(--text-light);
-    font-weight: 600;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(255, 117, 143, 0.5);
-    transition: transform 0.2s;
+
+
+#surprise {
+
+
+    padding:
+
+    20px 60px;
+
+
+    border:none;
+
+
+    border-radius:
+
+    50px;
+
+
+    background:
+
+    linear-gradient(
+
+    45deg,
+
+    #ff4d6d,
+
+    #ff758f
+
+    );
+
+
+    color:white;
+
+
+    font-size:25px;
+
+
+    font-weight:700;
+
+
+    cursor:pointer;
+
+
+    box-shadow:
+
+    0 10px 30px rgba(255,77,109,.5);
+
+
+    transition:.5s;
+
+
 }
 
-#surpriseButton:hover {
-    transform: scale(1.08);
+
+
+#surprise:hover {
+
+
+    transform:
+
+    scale(1.1);
+
+
 }
+
+
+
+/* =========================
+   MODAL SORPRESA
+   ========================= */
+
+
+.surprise-message {
+
+
+    position:fixed;
+
+
+    inset:0;
+
+
+    background:
+
+    rgba(0,0,0,.7);
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    z-index:999;
+
+
+    opacity:0;
+
+
+    visibility:hidden;
+
+
+    transition:1s;
+
+
+}
+
+
+
+.surprise-message.active {
+
+
+    opacity:1;
+
+
+    visibility:visible;
+
+
+}
+
+
+
+.surprise-box {
+
+
+    max-width:700px;
+
+
+    background:white;
+
+
+    padding:50px;
+
+
+    border-radius:30px;
+
+
+    text-align:center;
+
+
+    animation:
+
+    popup .8s;
+
+
+}
+
+
+
+.surprise-box h2 {
+
+
+    font-family:
+
+    var(--script);
+
+
+    font-size:70px;
+
+
+    color:
+
+    var(--pink);
+
+
+}
+
+
+
+.surprise-box p {
+
+
+    font-size:22px;
+
+
+    line-height:1.8;
+
+
+}
+
+
+
+@keyframes popup {
+
+
+    from {
+
+
+        transform:
+
+        scale(.5);
+
+
+        opacity:0;
+
+
+    }
+
+
+    to {
+
+
+        transform:
+
+        scale(1);
+
+
+        opacity:1;
+
+
+    }
+
+
+}
+
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
 
 footer {
-    padding: 50px 20px;
-    background: rgba(255, 255, 255, 0.3);
-    margin-top: 40px;
+
+
+    text-align:center;
+
+
+    padding:
+
+    100px 30px;
+
+
+    background:
+
+    rgba(255,255,255,.25);
+
+
+    backdrop-filter:
+
+    blur(10px);
+
+
 }
+
+
 
 footer h2 {
-    font-family: var(--font-script);
-    font-size: 3.5rem;
-    color: var(--primary-color);
-    margin-bottom: 10px;
-}
 
-/* ==========================================
-   9. MEDIA QUERIES (RESPONSIVO EN MÓVILES)
-   ========================================== */
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 3.2rem;
-    }
-    
-    .hero h2, .letter h2, footer h2 {
-        font-size: 2.5rem;
-    }
 
-    .photos img {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1/1;
-    }
-}
-/* ... aquí termina la sección 9 que ya tenías ... */
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 3.2rem;
-    }
-    
-    .hero h2, .letter h2, footer h2 {
-        font-size: 2.5rem;
-    }
+    font-family:
 
-    .photos img {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1/1;
-    }
+    var(--script);
+
+
+    font-size:90px;
+
+
+    color:white;
+
+
 }
 
 
-/* ==========================================
-   ANIMACIÓN DE CORAZONES FLOTANTES (AGREGA ESTO AQUÍ)
-   ========================================== */
-.heart {
-    position: absolute;
-    font-size: 1.5rem;
-    pointer-events: none;
-    user-select: none;
-    z-index: 999;
-    transform: translate(-50%, -50%);
-    animation: floatUp 4s forwards ease-out;
+
+footer p {
+
+
+    margin-top:30px;
+
+
+    font-size:22px;
+
+
+    line-height:1.8;
+
+
 }
 
-.burst-heart {
-    position: absolute;
-    font-size: 1.8rem;
-    animation: floatUpBurst 4s forwards ease-out;
+
+
+footer h1 {
+
+
+    margin-top:40px;
+
+
+    font-family:
+
+    var(--script);
+
+
+    font-size:80px;
+
+
+    color:
+
+    var(--pink);
+
+
 }
 
-@keyframes floatUp {
+
+
+/* =========================
+   RESPONSIVE TABLET
+   ========================= */
+
+
+@media(max-width:700px){
+
+
+    .reasons h2,
+
+    .future h2 {
+
+
+        font-size:50px;
+
+
+    }
+
+
+
+    .reason-card {
+
+
+        padding:35px 20px;
+
+
+    }
+
+
+
+    #reasonText {
+
+
+        font-size:22px;
+
+
+    }
+
+
+
+    .future li {
+
+
+        font-size:17px;
+
+
+    }
+
+
+
+    footer h2 {
+
+
+        font-size:55px;
+
+
+    }
+
+
+
+    footer h1 {
+
+
+        font-size:55px;
+
+
+    }
+/* =====================================================
+   PARA FANNY ❤️
+   STYLE.CSS
+   PARTE 5/5
+   ANIMACIONES Y DETALLES FINALES
+   ===================================================== */
+
+
+/* =========================
+   CORAZONES FLOTANTES
+   ========================= */
+
+
+.floating-heart {
+
+    position:fixed;
+
+    bottom:-50px;
+
+    font-size:25px;
+
+    color:#ff4d6d;
+
+    pointer-events:none;
+
+    animation:
+
+    rise 8s linear forwards;
+
+    z-index:100;
+
+
+}
+
+
+
+@keyframes rise {
+
+
     0% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(0.8);
+
+        transform:
+
+        translateY(0)
+
+        rotate(0deg);
+
+
+        opacity:1;
+
+
     }
-    50% {
-        opacity: 0.8;
-    }
+
+
     100% {
-        opacity: 0;
-        transform: translate(-50%, -150px) scale(1.3);
+
+
+        transform:
+
+        translateY(-120vh)
+
+        rotate(360deg);
+
+
+        opacity:0;
+
+
     }
+
+
 }
 
-@keyframes floatUpBurst {
+
+
+/* =========================
+   CORAZONES DE CLIC
+   ========================= */
+
+
+.click-heart {
+
+
+    position:absolute;
+
+
+    font-size:30px;
+
+
+    pointer-events:none;
+
+
+    animation:
+
+    clickFloat 2s ease forwards;
+
+
+    z-index:9999;
+
+
+}
+
+
+
+@keyframes clickFloat {
+
+
     0% {
-        opacity: 1;
-        transform: translateY(0) scale(0.8);
+
+
+        opacity:1;
+
+
+        transform:
+
+        scale(.5)
+
+        translateY(0);
+
+
     }
+
+
     100% {
-        opacity: 0;
-        transform: translateY(-100vh) scale(1.4);
-    }
-}
-/* ... aquí termina la sección 9 que ya tenías ... */
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 3.2rem;
-    }
-    
-    .hero h2, .letter h2, footer h2 {
-        font-size: 2.5rem;
+
+
+        opacity:0;
+
+
+        transform:
+
+        scale(1.5)
+
+        translateY(-120px);
+
+
     }
 
-    .photos img {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1/1;
-    }
+
 }
 
 
-/* ==========================================
-   ANIMACIÓN DE CORAZONES FLOTANTES (AGREGA ESTO AQUÍ)
-   ========================================== */
-.heart {
-    position: absolute;
-    font-size: 1.5rem;
-    pointer-events: none;
-    user-select: none;
-    z-index: 999;
-    transform: translate(-50%, -50%);
-    animation: floatUp 4s forwards ease-out;
+
+/* =========================
+   BRILLO DE BOTONES
+   ========================= */
+
+
+button {
+
+
+    position:relative;
+
+    overflow:hidden;
+
+
 }
 
-.burst-heart {
-    position: absolute;
-    font-size: 1.8rem;
-    animation: floatUpBurst 4s forwards ease-out;
+
+
+button::after {
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    top:0;
+
+
+    left:-100%;
+
+
+    width:100%;
+
+
+    height:100%;
+
+
+    background:
+
+    linear-gradient(
+
+    120deg,
+
+    transparent,
+
+    rgba(255,255,255,.7),
+
+    transparent
+
+    );
+
+
+    transition:.7s;
+
+
 }
 
-@keyframes floatUp {
+
+
+button:hover::after {
+
+
+    left:100%;
+
+
+}
+
+
+
+/* =========================
+   APARICIÓN AL HACER SCROLL
+   ========================= */
+
+
+.reveal {
+
+
+    opacity:0;
+
+
+    transform:
+
+    translateY(60px);
+
+
+    transition:
+
+    1s ease;
+
+
+}
+
+
+
+.reveal.active {
+
+
+    opacity:1;
+
+
+    transform:
+
+    translateY(0);
+
+
+}
+
+
+
+/* =========================
+   ESTRELLAS ANIMADAS
+   ========================= */
+
+
+.star {
+
+
+    animation:
+
+    sparkle 3s infinite alternate;
+
+
+}
+
+
+
+@keyframes sparkle {
+
+
+    from {
+
+
+        opacity:.2;
+
+
+        transform:
+
+        scale(.5);
+
+
+    }
+
+
+    to {
+
+
+        opacity:1;
+
+
+        transform:
+
+        scale(1.8);
+
+
+    }
+
+
+}
+
+
+
+/* =========================
+   EFECTO PULSO CORAZÓN
+   ========================= */
+
+
+.heart-beat {
+
+
+    animation:
+
+    heartbeat 1.3s infinite;
+
+
+}
+
+
+
+@keyframes heartbeat {
+
+
     0% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(0.8);
+
+
+        transform:
+
+        scale(1);
+
+
     }
-    50% {
-        opacity: 0.8;
+
+
+    25% {
+
+
+        transform:
+
+        scale(1.2);
+
+
     }
+
+
+    40% {
+
+
+        transform:
+
+        scale(1);
+
+
+    }
+
+
+    60% {
+
+
+        transform:
+
+        scale(1.15);
+
+
+    }
+
+
     100% {
-        opacity: 0;
-        transform: translate(-50%, -150px) scale(1.3);
+
+
+        transform:
+
+        scale(1);
+
+
     }
+
+
 }
 
-@keyframes floatUpBurst {
-    0% {
-        opacity: 1;
-        transform: translateY(0) scale(0.8);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(-100vh) scale(1.4);
-    }
+
+
+/* =========================
+   CURSOR ROMÁNTICO
+   ========================= */
+
+
+.cursor-heart {
+
+
+    position:fixed;
+
+
+    pointer-events:none;
+
+
+    font-size:18px;
+
+
+    z-index:99999;
+
+
+    animation:
+
+    cursorFade .8s forwards;
+
+
 }
 
+
+
+@keyframes cursorFade {
+
+
+    from {
+
+
+        opacity:1;
+
+
+        transform:
+
+        scale(1);
+
+
+    }
+
+
+    to {
+
+
+        opacity:0;
+
+
+        transform:
+
+        scale(2);
+
+
+    }
+
+
+}
+
+
+
+/* =========================
+   SELECCIÓN DE TEXTO
+   ========================= */
+
+
+::selection {
+
+
+    background:
+
+    #ff758f;
+
+
+    color:white;
+
+
+}
+
+
+
+/* =========================
+   BARRA DE SCROLL
+   ========================= */
+
+
+::-webkit-scrollbar {
+
+
+    width:10px;
+
+
+}
+
+
+
+::-webkit-scrollbar-track {
+
+
+    background:
+
+    #ffe5ec;
+
+
+}
+
+
+
+::-webkit-scrollbar-thumb {
+
+
+    background:
+
+    #ff4d6d;
+
+
+    border-radius:20px;
+
+
+}
+
+
+
+/* =========================
+   OPTIMIZACIÓN MÓVIL
+   ========================= */
+
+
+@media(max-width:600px){
+
+
+    body {
+
+
+        overflow-x:hidden;
+
+
+    }
+
+
+
+    section {
+
+
+        padding:
+
+        60px 15px;
+
+
+    }
+
+
+
+    .hero p {
+
+
+        font-size:18px;
+
+
+    }
+
+
+
+    .hero h1 {
+
+
+        font-size:80px;
+
+
+    }
+
+
+
+    .message p {
+
+
+        font-size:17px;
+
+
+    }
+
+
+
+    .contador-grid {
+
+
+        grid-template-columns:
+
+        1fr 1fr;
+
+
+        gap:15px;
+
+
+    }
+
+
+
+    .box span {
+
+
+        font-size:35px;
+
+
+    }
+
+
+
+    .gallery h2,
+
+    .counter h2 {
+
+
+        font-size:50px;
+
+
+    }
+
+
+}
+
+
+
+/* =========================
+   FINAL
+   ========================= */
+
+
+.final-love {
+
+
+    min-height:100vh;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    flex-direction:column;
+
+
+    text-align:center;
+
+
+}
+
+
+
+.final-love h1 {
+
+
+    font-family:
+
+    var(--script);
+
+
+    font-size:
+
+    clamp(70px,10vw,130px);
+
+
+    color:white;
+
+
+}
+
+
+
+.final-love p {
+
+
+    font-size:25px;
+
+
+    color:white;
+
+
+    margin-top:20px;
+
+
+}
+
+}}
