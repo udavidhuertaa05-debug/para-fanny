@@ -2,367 +2,173 @@
 <html lang="es">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Fanny ❤️</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
-<title>Para Fanny ❤️</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="Style.css">
-
+  <!-- Hoja de Estilos -->
+  <link rel="stylesheet" href="Style.css">
 </head>
 
 <body>
 
-<!-- Fondo -->
-
-<div id="stars"></div>
-
-<div id="hearts"></div>
-
-<!-- Loader -->
-
-<div id="loader">
-
-<h1>❤️</h1>
-
-<h2>Para Fanny</h2>
-
-<p>Cargando un pedacito de mi corazón...</p>
-
-</div>
-
-<!-- Música -->
-
-<audio id="music" loop>
-
-<source src="music/song.mp3" type="audio/mpeg">
-
-</audio>
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="hero-content">
-
-<h1>Fanny ❤️</h1>
-
-<p>
-
-Hay personas que llegan a nuestra vida...
-
-y sin darse cuenta la cambian para siempre.
-
-</p>
-
-<button id="startButton">
-
-Abrir mi corazón 💌
-
-</button>
-
-</div>
-
-</section>
-
-<!-- MENSAJE -->
-
-<section class="message hidden">
-
-<div class="glass">
-
-<h2>Mi persona favorita</h2>
-
-<p>
-
-No existe regalo suficiente para agradecer que estés en mi vida.
-
-Así que decidí regalarte algo diferente.
-
-Un pedacito de mi tiempo.
-
-Un pedacito de mi corazón.
-
-Y una página hecha únicamente para ti.
-
-</p>
-
-</div>
-
-</section>
-
-<!-- CONTADOR -->
-
-<section class="counter hidden">
-
-<h2>
-
-Desde el 22 de mayo de 2026...
-
-</h2>
-
-<div class="contador-grid">
-
-<div class="box">
-
-<span id="dias">0</span>
-
-<p>Días</p>
-
-</div>
-
-<div class="box">
-
-<span id="horas">0</span>
-
-<p>Horas</p>
-
-</div>
-
-<div class="box">
-
-<span id="minutos">0</span>
-
-<p>Minutos</p>
-
-</div>
-
-<div class="box">
-
-<span id="segundos">0</span>
-
-<p>Segundos</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- SOBRE -->
-
-<section class="letter-section hidden">
-
-<h2>
-
-Tengo algo para ti...
-
-</h2>
-
-<div class="envelope" id="envelope">
-
-<div class="back"></div>
-
-<div class="letter">
-
-<div class="paper">
-
-<h3>Mi querida Fanny ❤️</h3>
-
-<p id="typing"></p>
-
-</div>
-
-</div>
-
-<div class="front"></div>
-
-<div class="heart-seal">
-
-❤️
-
-</div>
-
-</div>
-
-<p class="hint">
-
-Haz clic en el corazón para abrir el sobre.
-
-</p>
-
-</section>
-
-<!-- GALERÍA -->
-
-<section class="gallery hidden">
-
-<h2>
-
-Nuestros recuerdos 📸
-
-</h2>
-
-<div class="photos">
-
-<div class="photo">
-
-<img src="foto1.jpg.JPG">
-
-<span>
-
-Nuestro primer recuerdo favorito ❤️
-
-</span>
-
-</div>
-
-<div class="photo">
-
-<img src="foto2.jpg.JPG">
-
-<span>
-
-Nunca olvidaré este día.
-
-</span>
-
-</div>
-
-<div class="photo">
-
-<img src="foto3.jpg.JPG">
-
-<span>
-
-Quiero llenar mi vida de momentos contigo.
-
-</span>
-
-</div>
-
-<div class="photo">
-
-<img src="foto4.jpg.JPG">
-
-<span>
-
-Siempre haces que todo sea mejor.
-
-</span>
-
-</div>
-
-<div class="photo">
-
-<img src="foto5.jpg.JPG">
-
-<span>
-
-Mi lugar favorito siempre será contigo.
-
-</span>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- RAZONES -->
-
-<section class="reasons hidden">
-
-<h2>
-
-100 razones por las que te amo ❤️
-
-</h2>
-
-<div class="reason-card">
-
-<p id="reasonText">
-
-Presiona el botón ❤️
-
-</p>
-
-<button id="reasonButton">
-
-❤️ Otra razón
-
-</button>
-
-</div>
-
-</section>
-
-<!-- FUTURO -->
-
-<section class="future hidden">
-
-<h2>
-
-Lo que sueño contigo 🌎
-
-</h2>
-
-<ul>
-
-<li>✈️ Viajar juntos.</li>
-
-<li>🏡 Tener un hogar.</li>
-
-<li>🐶 Una mascota.</li>
-
-<li>🎄 Muchas Navidades.</li>
-
-<li>🌅 Muchos atardeceres.</li>
-
-<li>❤️ Envejecer contigo.</li>
-
-</ul>
-
-</section>
-
-<!-- BOTÓN FINAL -->
-
-<section class="surprise hidden">
-
-<button id="surprise">
-
-Presióname ❤️
-
-</button>
-
-</section>
-
-<!-- FINAL -->
-
-<footer>
-
-<h2>
-
-Te amo infinitamente
-
-</h2>
-
-<p>
-
-Gracias por leer hasta aquí.
-
-Si algún día vuelves a entrar a esta página...
-
-quiero que recuerdes que siempre voy a elegirte.
-
-</p>
-
-<h1>
-
-David ❤️
-
-</h1>
-
-</footer>
-
-<script src="script.js"></script>
-
+  <!-- Fondo -->
+  <div id="stars"></div>
+  <div id="hearts"></div>
+
+  <!-- Loader -->
+  <div id="loader">
+    <h1>❤️</h1>
+    <h2>Para Fanny</h2>
+    <p>Cargando un pedacito de mi corazón...</p>
+  </div>
+
+  <!-- Música -->
+  <audio id="music" loop>
+    <source src="music/song.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Fanny ❤️</h1>
+      <p>
+        Hay personas que llegan a nuestra vida...
+        y sin darse cuenta la cambian para siempre.
+      </p>
+      <button id="startButton">
+        Abrir mi corazón 💌
+      </button>
+    </div>
+  </section>
+
+  <!-- MENSAJE -->
+  <section class="message hidden">
+    <div class="glass">
+      <h2>Mi persona favorita</h2>
+      <p>
+        No existe regalo suficiente para agradecer que estés en mi vida.
+        Así que decidí regalarte algo diferente.
+        Un pedacito de mi tiempo.
+        Un pedacito de mi corazón.
+        Y una página hecha únicamente para ti.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTADOR -->
+  <section class="counter hidden">
+    <h2>Desde el 22 de mayo de 2026...</h2>
+    <div class="contador-grid">
+      <div class="box">
+        <span id="dias">0</span>
+        <p>Días</p>
+      </div>
+      <div class="box">
+        <span id="horas">0</span>
+        <p>Horas</p>
+      </div>
+      <div class="box">
+        <span id="minutos">0</span>
+        <p>Minutos</p>
+      </div>
+      <div class="box">
+        <span id="segundos">0</span>
+        <p>Segundos</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="letter-section hidden">
+    <h2>Tengo algo para ti...</h2>
+    <div class="envelope" id="envelope">
+      <div class="back"></div>
+      <div class="letter">
+        <div class="paper">
+          <h3>Mi querida Fanny ❤️</h3>
+          <p id="typing"></p>
+        </div>
+      </div>
+      <div class="front"></div>
+      <div class="heart-seal">❤️</div>
+    </div>
+    <p class="hint">
+      Haz clic en el corazón para abrir el sobre.
+    </p>
+  </section>
+
+  <!-- GALERÍA -->
+  <section class="gallery hidden">
+    <h2>Nuestros recuerdos 📸</h2>
+    <div class="photos">
+      <div class="photo">
+        <img src="foto1.jpg.JPG" alt="Recuerdo 1">
+        <span>Nuestro primer recuerdo favorito ❤️</span>
+      </div>
+      <div class="photo">
+        <img src="foto2.jpg.JPG" alt="Recuerdo 2">
+        <span>Nunca olvidaré este día.</span>
+      </div>
+      <div class="photo">
+        <img src="foto3.jpg.JPG" alt="Recuerdo 3">
+        <span>Quiero llenar mi vida de momentos contigo.</span>
+      </div>
+      <div class="photo">
+        <img src="foto4.jpg.JPG" alt="Recuerdo 4">
+        <span>Siempre haces que todo sea mejor.</span>
+      </div>
+      <div class="photo">
+        <img src="foto5.jpg.JPG" alt="Recuerdo 5">
+        <span>Mi lugar favorito siempre será contigo.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- RAZONES -->
+  <section class="reasons hidden">
+    <h2>100 razones por las que te amo ❤️</h2>
+    <div class="reason-card">
+      <p id="reasonText">Presiona el botón ❤️</p>
+      <button id="reasonButton">❤️ Otra razón</button>
+    </div>
+  </section>
+
+  <!-- FUTURO -->
+  <section class="future hidden">
+    <h2>Lo que sueño contigo 🌎</h2>
+    <ul>
+      <li>✈️ Viajar juntos.</li>
+      <li>🏡 Tener un hogar.</li>
+      <li>🐶 Una mascota.</li>
+      <li>🎄 Muchas Navidades.</li>
+      <li>🌅 Muchos atardeceres.</li>
+      <li>❤️ Envejecer contigo.</li>
+    </ul>
+  </section>
+
+  <!-- BOTÓN FINAL -->
+  <section class="surprise hidden">
+    <button id="surprise">Presióname ❤️</button>
+  </section>
+
+  <!-- FINAL -->
+  <footer>
+    <h2>Te amo infinitamente</h2>
+    <p>
+      Gracias por leer hasta aquí.
+      Si algún día vuelves a entrar a esta página...
+      quiero que recuerdes que siempre voy a elegirte.
+    </p>
+    <h1>David ❤️</h1>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 
 </html>
