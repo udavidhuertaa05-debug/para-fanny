@@ -1,291 +1,213 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>De David para Fanny ❤️</title>
+    <title>De David para Fanny ❤️</title>
 
-<style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',Arial,sans-serif;
-}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
-body{
-background:linear-gradient(135deg,#ff8fb1,#ffd1dc,#fff0f5);
-min-height:100vh;
-color:white;
-text-align:center;
-overflow-x:hidden;
-}
-
-header{
-padding:60px 20px 30px;
-}
-
-h1{
-font-size:45px;
-text-shadow:0 5px 15px #ff4d88;
-animation:entrada 2s;
-}
-
-h2{
-margin-top:15px;
-font-weight:normal;
-}
-
-.carta{
-background:rgba(255,255,255,.25);
-backdrop-filter:blur(10px);
-max-width:800px;
-margin:30px auto;
-padding:30px;
-border-radius:30px;
-box-shadow:0 15px 35px rgba(0,0,0,.2);
-font-size:20px;
-line-height:35px;
-}
-
-#contador{
-margin:30px;
-font-size:28px;
-font-weight:bold;
-}
-
-.galeria{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
-padding:30px;
-}
-
-.galeria img{
-width:100%;
-border-radius:25px;
-border:5px solid white;
-box-shadow:0 10px 25px rgba(0,0,0,.3);
-transition:.5s;
-cursor:pointer;
-}
-
-.galeria img:hover{
-transform:scale(1.08) rotate(2deg);
-}
-
-#mensajeFoto{
-margin:20px auto;
-max-width:650px;
-font-size:25px;
-font-weight:bold;
-background:rgba(255,255,255,.25);
-padding:20px;
-border-radius:25px;
-transition:opacity .35s, transform .35s;
-opacity:1;
-transform:scale(1);
-box-shadow:0 8px 20px rgba(0,0,0,.2);
-}
-
-button{
-background:#ff4d88;
-color:white;
-border:none;
-padding:15px 30px;
-border-radius:30px;
-font-size:18px;
-cursor:pointer;
-box-shadow:0 5px 15px rgba(0,0,0,.3);
-transition:.3s;
-}
-
-button:hover{
-transform:scale(1.05);
-}
-
-footer{
-padding:50px;
-font-size:22px;
-}
-
-.corazon{
-position:fixed;
-top:-20px;
-animation:caer linear forwards;
-font-size:25px;
-pointer-events:none;
-}
-
-@keyframes caer{
-to{
-transform:translateY(110vh);
-opacity:0;
-}
-}
-
-@keyframes entrada{
-from{
-opacity:0;
-transform:translateY(-40px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-</style>
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<header>
+    <!-- Pantalla de carga -->
 
-<h1>❤️ De David para Fanny ❤️</h1>
+    <div id="loader">
 
-<h2>Desde el 22 de mayo 💕</h2>
+        <h1>❤️ De David para Fanny ❤️</h1>
 
-<div class="carta">
+        <p>Cada segundo de esta página fue hecho pensando en ti...</p>
 
-Mi amor... ❤️
+        <div class="heart-loader"></div>
 
-<br><br>
+    </div>
 
-Gracias por cada sonrisa, por cada abrazo y por hacer que mis días sean mucho más felices.
+    <!-- Música -->
 
-Esta página es un pequeño detalle para recordarte lo mucho que significas para mí.
+    <audio id="music" loop>
+        <source src="music/song.mp3" type="audio/mpeg">
+    </audio>
 
-Quiero seguir creando recuerdos contigo, riendo contigo y amándote cada día más.
+    <!-- Encabezado -->
 
-<br><br>
+    <header>
 
-Te amo muchísimo, Fanny. ❤️
+        <h1>De David para Fanny</h1>
 
-</div>
+        <p class="subtitle">
 
-<div id="contador"></div>
+            Desde el 22 de mayo de 2026 ❤️
 
-<button onclick="mensaje()">
-Presiona aquí ❤️
-</button>
+        </p>
 
-</header>
+        <button id="musicButton">
 
-<section class="galeria">
+            🎵 Reproducir música
 
-<img src="foto1.jpg.JPG" onclick="mostrarMensaje(0)">
-<img src="foto2.jpg.JPG" onclick="mostrarMensaje(1)">
-<img src="foto3.jpg.JPG" onclick="mostrarMensaje(2)">
-<img src="foto4.jpg.JPG" onclick="mostrarMensaje(3)">
-<img src="foto5.jpg.JPG" onclick="mostrarMensaje(4)">
+        </button>
 
-</section>
+    </header>
 
-<div id="mensajeFoto">
-❤️ Toca una foto para descubrir un mensaje ❤️
-</div>
+    <!-- Mensaje -->
 
-<footer>
-Siempre tú y yo... ❤️
-</footer>
+    <section class="hero">
 
-<script>
-// CONTADOR
+        <div class="glass">
 
-const inicio = new Date("2026-05-22");
+            <h2>Mi persona favorita</h2>
 
-function actualizar(){
+            <p>
 
-const hoy = new Date();
-const diferencia = hoy - inicio;
-const dias = Math.floor(diferencia / (1000*60*60*24));
+                Gracias por llegar a mi vida.
 
-document.getElementById("contador").innerHTML =
-"💖 Llevamos juntos<br><br><span style='font-size:45px;'>" +
-dias +
-" días ❤️</span>";
+                Desde que te conocí, todo es mucho más bonito.
 
-}
+                Esta página es una pequeña muestra de lo mucho que significas para mí.
 
-actualizar();
+            </p>
 
+        </div>
 
-// MENSAJES DE LAS FOTOS
+    </section>
 
-const mensajes = [
+    <!-- Contador -->
 
-"❤️ Te amo muchísimo, Fanny. Gracias por llegar a mi vida.",
+    <section class="counter">
 
-"💕 Te extraño incluso cuando solo pasan unas horas sin verte.",
+        <h2>Tiempo que llevamos juntos ❤️</h2>
 
-"🥹 Cada recuerdo contigo es uno de mis tesoros favoritos.",
+        <div id="contador"></div>
 
-"🌹 Eres la persona que más feliz me hace. Nunca olvides lo especial que eres para mí.",
+    </section>
 
-"💖 Si volviera a empezar mi vida, te volvería a elegir a ti una y mil veces."
+    <!-- Galería -->
 
-];
+    <section class="gallery">
 
-function mostrarMensaje(numero){
+        <h2>Nuestros recuerdos 📸</h2>
 
-const cuadro = document.getElementById("mensajeFoto");
+        <div class="photos">
 
-cuadro.style.opacity = "0";
-cuadro.style.transform = "scale(.95)";
+            <img src="images/foto1.jpg" alt="Foto 1">
 
-setTimeout(function(){
+            <img src="images/foto2.jpg" alt="Foto 2">
 
-cuadro.innerHTML = mensajes[numero];
+            <img src="images/foto3.jpg" alt="Foto 3">
 
-cuadro.style.opacity = "1";
-cuadro.style.transform = "scale(1)";
+            <img src="images/foto4.jpg" alt="Foto 4">
 
-},250);
+            <img src="images/foto5.jpg" alt="Foto 5">
 
-}
+        </div>
 
+    </section>
 
-// BOTÓN
+    <!-- Razones -->
 
-function mensaje(){
+    <section class="reasons">
 
-alert("❤️ Fanny ❤️\n\nGracias por hacer mi vida mucho más bonita.\nTe amo muchísimo y siempre quiero verte sonreír. 💕");
+        <h2>Razones por las que te amo ❤️</h2>
 
-}
+        <div class="cards">
 
+            <div class="card">❤️ Tu hermosa sonrisa.</div>
 
-// CORAZONES
+            <div class="card">🥰 Tu forma de hacerme sentir.</div>
 
-function crearCorazon(){
+            <div class="card">🌎 Porque haces mejor mi mundo.</div>
 
-const c = document.createElement("div");
+            <div class="card">✨ Porque contigo todo tiene sentido.</div>
 
-c.className = "corazon";
-c.innerHTML = "❤️";
+            <div class="card">🤍 Porque siempre puedo ser yo.</div>
 
-c.style.left = Math.random()*100 + "vw";
-c.style.animationDuration = (3 + Math.random()*4) + "s";
-c.style.fontSize = (20 + Math.random()*20) + "px";
+            <div class="card">💍 Porque quiero compartir mi vida contigo.</div>
 
-document.body.appendChild(c);
+        </div>
 
-setTimeout(function(){
+    </section>
+        <!-- Carta -->
 
-c.remove();
+    <section class="letter">
 
-},7000);
+        <div class="glass">
 
-}
+            <h2>Una carta para ti 💌</h2>
 
-setInterval(crearCorazon,350);
+            <p id="typing"></p>
 
-</script>
+        </div>
+
+    </section>
+
+    <!-- Nuestro futuro -->
+
+    <section class="future">
+
+        <h2>Nuestro futuro ❤️</h2>
+
+        <ul>
+
+            <li>✈️ Viajar juntos y conocer muchos lugares.</li>
+
+            <li>🏡 Construir un hogar lleno de amor.</li>
+
+            <li>🐶 Tener una mascota que nos acompañe.</li>
+
+            <li>🎄 Pasar muchísimas Navidades contigo.</li>
+
+            <li>🌅 Ver atardeceres tomados de la mano.</li>
+
+            <li>❤️ Envejecer contigo.</li>
+
+        </ul>
+
+    </section>
+
+    <!-- Sorpresa -->
+
+    <section class="surprise">
+
+        <button id="surpriseButton">
+
+            ❤️ Presióname ❤️
+
+        </button>
+
+    </section>
+
+    <!-- Final -->
+
+    <footer>
+
+        <h2>Te amo infinitamente ❤️</h2>
+
+        <p>
+
+            Gracias por ser la mejor parte de mi vida.
+
+            <br><br>
+
+            Siempre tuyo,
+
+            <br>
+
+            <strong>David</strong>
+
+        </p>
+
+    </footer>
+
+    <script src="script.js"></script>
 
 </body>
-</html>
 
+</html>
