@@ -1,379 +1,322 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* ==========================================
+   1. VARIABLES & RESET
+   ========================================== */
+:root {
+    --primary-color: #e63946;
+    --secondary-color: #ff758f;
+    --bg-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    --text-dark: #2b2d42;
+    --text-light: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --font-main: 'Poppins', sans-serif;
+    --font-script: 'Great Vibes', cursive;
 }
 
-html{
-    scroll-behavior:smooth;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    font-family:'Poppins',sans-serif;
-    background:linear-gradient(180deg,#080814,#12122b,#1a1035,#240c3b);
-    color:white;
-    overflow-x:hidden;
+body {
+    font-family: var(--font-main);
+    background: var(--bg-gradient);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+    text-align: center;
 }
 
-/* Fondo animado */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:
-    radial-gradient(circle at 20% 20%,rgba(255,255,255,.12),transparent 25%),
-    radial-gradient(circle at 80% 30%,rgba(255,192,203,.18),transparent 20%),
-    radial-gradient(circle at 50% 80%,rgba(255,255,255,.10),transparent 20%);
-    animation:backgroundMove 18s linear infinite;
-    z-index:-2;
+/* ==========================================
+   2. PANTALLA DE CARGA (LOADER)
+   ========================================== */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
-@keyframes backgroundMove{
-
-0%{transform:translateY(0);}
-50%{transform:translateY(-40px);}
-100%{transform:translateY(0);}
-
+#loader h1 {
+    font-family: var(--font-script);
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
 }
 
-/* Loader */
-
-#loader{
-
-position:fixed;
-inset:0;
-background:#070710;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-z-index:9999;
-
-}
-
-#loader h1{
-
-font-family:'Great Vibes',cursive;
-font-size:3rem;
-margin-bottom:20px;
-
-}
-
-#loader p{
-
-opacity:.8;
-
-}
-
-.heart-loader{
-
-margin-top:30px;
-width:70px;
-height:70px;
-background:#ff2d75;
-transform:rotate(45deg);
-animation:pulse 1.2s infinite;
-
+.heart-loader {
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    margin: 30px auto;
+    transform: rotate(45deg);
+    animation: heartbeat 1.2s infinite;
+    position: relative;
 }
 
 .heart-loader::before,
-.heart-loader::after{
-
-content:"";
-position:absolute;
-width:70px;
-height:70px;
-background:#ff2d75;
-border-radius:50%;
-
+.heart-loader::after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    position: absolute;
 }
 
-.heart-loader::before{
-
-left:-35px;
-
+.heart-loader::before {
+    top: -25px;
+    left: 0;
 }
 
-.heart-loader::after{
-
-top:-35px;
-
+.heart-loader::after {
+    left: -25px;
+    top: 0;
 }
 
-@keyframes pulse{
-
-0%{transform:rotate(45deg) scale(1);}
-50%{transform:rotate(45deg) scale(1.2);}
-100%{transform:rotate(45deg) scale(1);}
-
+@keyframes heartbeat {
+    0% { transform: rotate(45deg) scale(0.8); }
+    50% { transform: rotate(45deg) scale(1.2); }
+    100% { transform: rotate(45deg) scale(0.8); }
 }
 
-/* Header */
-
-header{
-
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-
+/* ==========================================
+   3. ENCABEZADO Y HERO
+   ========================================== */
+header {
+    padding: 60px 20px 30px;
 }
 
-header h1{
-
-font-family:'Great Vibes',cursive;
-font-size:5rem;
-color:#ffd6e7;
-
+header h1 {
+    font-family: var(--font-script);
+    font-size: 4.5rem;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
-.subtitle{
-
-font-size:1.2rem;
-margin-top:15px;
-opacity:.9;
-
+.subtitle {
+    font-weight: 300;
+    margin-top: 10px;
+    font-size: 1.1rem;
 }
 
-button{
-
-padding:15px 35px;
-border:none;
-border-radius:50px;
-margin-top:35px;
-background:#ff4f93;
-color:white;
-font-size:18px;
-cursor:pointer;
-transition:.3s;
-
+#musicButton {
+    margin-top: 25px;
+    padding: 12px 28px;
+    border: none;
+    background: var(--primary-color);
+    color: var(--text-light);
+    font-family: var(--font-main);
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
+    transition: transform 0.2s, background-color 0.2s;
 }
 
-button:hover{
-
-transform:scale(1.08);
-background:#ff78ae;
-
+#musicButton:hover {
+    transform: scale(1.05);
+    background: #d62839;
 }
 
-/* Secciones */
-
-section{
-
-padding:90px 10%;
-
+/* EFECTO GLASSMORPHISM PARA SECCIONES */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 700px;
+    margin: 20px auto;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
 }
 
-h2{
-
-text-align:center;
-margin-bottom:40px;
-font-size:2.4rem;
-color:#ffd9ea;
-
+.hero h2, .letter h2 {
+    font-family: var(--font-script);
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
 }
 
-/* Glass */
-
-.glass{
-
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(15px);
-border:1px solid rgba(255,255,255,.15);
-border-radius:25px;
-padding:40px;
-box-shadow:0 10px 30px rgba(0,0,0,.4);
-
+/* ==========================================
+   4. CONTADOR
+   ========================================== */
+.counter {
+    padding: 40px 20px;
 }
 
-/* Contador */
-
-.counter{
-
-text-align:center;
-
+.counter h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
 }
 
-#contador{
-
-font-size:2rem;
-margin-top:20px;
-font-weight:bold;
-color:#ffb9d7;
-
+#contador {
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.5);
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 15px;
 }
 
-/* Galería */
-
-.photos{
-
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-gap:25px;
-
+/* ==========================================
+   5. GALERÍA DE FOTOS
+   ========================================== */
+.gallery {
+    padding: 40px 20px;
 }
 
-.photos img{
-
-width:100%;
-border-radius:20px;
-transition:.4s;
-box-shadow:0 15px 25px rgba(0,0,0,.4);
-
+.gallery h2 {
+    margin-bottom: 25px;
+    font-size: 1.8rem;
 }
 
-.photos img:hover{
-
-transform:scale(1.08) rotate(2deg);
-
+.photos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-/* Tarjetas */
-
-.cards{
-
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
-
+.photos img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card{
-
-background:rgba(255,255,255,.08);
-padding:25px;
-border-radius:20px;
-text-align:center;
-transition:.4s;
-font-size:18px;
-
+.photos img:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-.card:hover{
-
-transform:translateY(-10px);
-background:#ff4f93;
-
+/* ==========================================
+   6. TARJETAS DE RAZONES
+   ========================================== */
+.reasons {
+    padding: 40px 20px;
 }
 
-/* Carta */
-
-.letter p{
-
-font-size:20px;
-line-height:1.8;
-
+.reasons h2 {
+    margin-bottom: 25px;
+    font-size: 1.8rem;
 }
 
-/* Futuro */
-
-.future ul{
-
-max-width:650px;
-margin:auto;
-list-style:none;
-
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-.future li{
-
-padding:20px;
-margin:15px 0;
-background:rgba(255,255,255,.08);
-border-radius:18px;
-
+.card {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    border-radius: 15px;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
 }
 
-/* Botón sorpresa */
-
-.surprise{
-
-text-align:center;
-
+.card:hover {
+    transform: translateY(-3px);
 }
 
-/* Footer */
-
-footer{
-
-padding:90px 20px;
-text-align:center;
-background:#05050b;
-
+/* ==========================================
+   7. NUESTRO FUTURO
+   ========================================== */
+.future {
+    padding: 40px 20px;
 }
 
-footer h2{
-
-font-family:'Great Vibes',cursive;
-font-size:3rem;
-
+.future h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
 }
 
-footer p{
-
-margin-top:20px;
-
+.future ul {
+    list-style: none;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
 }
 
-/* Corazones */
-
-.heart{
-
-position:fixed;
-font-size:25px;
-animation:floatUp 5s linear forwards;
-pointer-events:none;
-
+.future li {
+    background: rgba(255, 255, 255, 0.4);
+    margin-bottom: 10px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 400;
 }
 
-@keyframes floatUp{
-
-0%{
-
-transform:translateY(0) scale(0);
-opacity:1;
-
+/* ==========================================
+   8. SORPRESA & FOOTER
+   ========================================== */
+.surprise {
+    padding: 30px 20px;
 }
 
-100%{
-
-transform:translateY(-900px) scale(2);
-opacity:0;
-
+#surpriseButton {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border: none;
+    background: var(--secondary-color);
+    color: var(--text-light);
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 117, 143, 0.5);
+    transition: transform 0.2s;
 }
 
+#surpriseButton:hover {
+    transform: scale(1.08);
 }
 
-/* Responsive */
-
-@media(max-width:768px){
-
-header h1{
-
-font-size:3.5rem;
-
+footer {
+    padding: 50px 20px;
+    background: rgba(255, 255, 255, 0.3);
+    margin-top: 40px;
 }
 
-section{
-
-padding:70px 20px;
-
+footer h2 {
+    font-family: var(--font-script);
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
 }
 
-h2{
+/* ==========================================
+   9. MEDIA QUERIES (RESPONSIVO EN MÓVILES)
+   ========================================== */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 3.2rem;
+    }
+    
+    .hero h2, .letter h2, footer h2 {
+        font-size: 2.5rem;
+    }
 
-font-size:2rem;
-
-}
-
-button{
-
-width:100%;
-
-}
-
+    .photos img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1/1;
+    }
 }
