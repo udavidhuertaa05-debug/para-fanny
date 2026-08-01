@@ -1,6 +1,6 @@
 /* =====================================================
    PARA FANNY ❤️
-   SCRIPT.JS - VERSIÓN CORREGIDA
+   SCRIPT.JS - VERSIÓN CORREGIDA Y OPTIMIZADA
    ===================================================== */
 
 /* =========================
@@ -24,14 +24,19 @@ window.addEventListener("load", () => {
 const startButton = document.getElementById("startButton");
 const music = document.getElementById("music");
 
-if (music) {
-    music.volume = 0.4;
-}
-
 if (startButton && music) {
     startButton.addEventListener("click", () => {
-        music.play().catch(e => console.log("Autoplay bloqueado por el navegador:", e));
+        // Fijamos el volumen directo antes de reproducir
+        music.volume = 0.4;
+        
+        // Intentamos reproducir el audio
+        music.play().then(() => {
+            console.log("Música reproduciéndose correctamente.");
+        }).catch(e => {
+            console.log("Error al reproducir música:", e);
+        });
 
+        // Muestra los elementos ocultos
         document.querySelectorAll(".hidden").forEach(section => {
             section.classList.add("show");
         });
@@ -118,7 +123,7 @@ if (hearts) {
         setTimeout(() => {
             heart.remove();
         }, 12000);
-    }, 1500); // <-- Corrección: intervalo cerrado correctamente
+    }, 1500);
 }
 
 /* =========================
@@ -335,22 +340,3 @@ document.body.addEventListener("dblclick", () => {
         clicks = 0;
     }
 });
-
-/* =========================
-   EFECTO DE MÚSICA SUAVE (FADE IN)
-   ========================= */
-if (music) {
-    music.addEventListener("play", () => {
-        music.volume = 0;
-        let volumen = 0;
-
-        const subir = setInterval(() => {
-            if (volumen < 0.4) {
-                volumen += 0.02;
-                music.volume = Math.min(volumen, 0.4);
-            } else {
-                clearInterval(subir);
-            }
-        }, 100);
-    });
-}
