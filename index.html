@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>De David para Fanny ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+background:linear-gradient(135deg,#ffb6c1,#ffd6e7,#ffeef5);
+overflow-x:hidden;
+text-align:center;
+color:white;
+
+}
+
+header{
+
+padding:60px 20px;
+
+}
+
+h1{
+
+font-size:50px;
+
+text-shadow:3px 3px 8px #ff4d88;
+
+}
+
+h2{
+
+margin-top:10px;
+font-size:24px;
+font-weight:normal;
+
+}
+
+p{
+
+margin:25px auto;
+max-width:800px;
+font-size:20px;
+line-height:35px;
+padding:20px;
+
+}
+
+#contador{
+
+font-size:28px;
+font-weight:bold;
+margin:30px;
+
+}
+
+.galeria{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:40px;
+
+}
+
+.galeria img{
+
+width:100%;
+border-radius:20px;
+box-shadow:0px 10px 25px rgba(0,0,0,.3);
+transition:.4s;
+
+}
+
+.galeria img:hover{
+
+transform:scale(1.05);
+
+}
+
+footer{
+
+padding:50px;
+font-size:20px;
+
+}
+
+.corazon{
+
+position:fixed;
+top:-20px;
+color:red;
+font-size:25px;
+animation:caer linear forwards;
+
+}
+
+@keyframes caer{
+
+to{
+
+transform:translateY(110vh);
+opacity:0;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>❤️ De David para Fanny ❤️</h1>
+
+<h2>Desde el 22 de mayo 💕</h2>
+
+<p>
+
+Mi amor...
+
+Hoy solo quería recordarte lo mucho que significas para mí.
+
+Gracias por hacer mis días más bonitos, por cada sonrisa, cada abrazo y cada momento que compartimos.
+
+Espero que esta pequeña página te saque una sonrisa, porque así como tú iluminas mi vida, quería hacer algo que te recordara lo especial que eres.
+
+Te amo muchísimo. ❤️
+
+</p>
+
+<div id="contador"></div>
+
+</header>
+
+<section class="galeria">
+
+<img src="foto1.jpg">
+
+<img src="foto2.jpg">
+
+<img src="foto3.jpg">
+
+<img src="foto4.jpg">
+
+<img src="foto5.jpg">
+
+</section>
+
+<footer>
+
+Siempre tú y yo... ❤️
+
+</footer>
+
+<script>
+
+// Contador
+
+const inicio = new Date("2026-05-22");
+
+function actualizar(){
+
+const hoy = new Date();
+
+const diferencia = hoy - inicio;
+
+const dias = Math.floor(diferencia/(1000*60*60*24));
+
+document.getElementById("contador").innerHTML=
+
+"💖 Llevamos juntos <br><br><span style='font-size:45px;'>"+dias+" días ❤️</span>";
+
+}
+
+actualizar();
+
+
+// Corazones
+
+function crearCorazon(){
+
+const c=document.createElement("div");
+
+c.classList.add("corazon");
+
+c.innerHTML="❤️";
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.animationDuration=(3+Math.random()*4)+"s";
+
+c.style.fontSize=(20+Math.random()*30)+"px";
+
+document.body.appendChild(c);
+
+setTimeout(()=>{
+
+c.remove();
+
+},7000);
+
+}
+
+setInterval(crearCorazon,300);
+
+</script>
+
+</body>
+</html>
